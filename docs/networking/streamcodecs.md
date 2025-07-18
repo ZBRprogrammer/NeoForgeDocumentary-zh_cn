@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 2
 ---
 # **流编解码器**(`Stream Codecs`)
@@ -6,7 +6,7 @@ sidebar_position: 2
 **流编解码器**(`Stream codecs`)是用于描述如何将对象存储/读取到流（如缓冲区）的序列化工具，主要被原版(`vanilla`)的[网络系统][networking]用于数据同步。
 
 :::info
-流编解码器与[编解码器](`codecs`)类似，本页采用相同格式展示其相似性。
+流编解码器与[编解码器(`codecs`)][codecs]类似，本页采用相同格式展示其相似性。
 :::
 
 ## 使用流编解码器

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 1
 ---
 # **命名二进制标签**(`Named Binary Tag, NBT`)
@@ -27,7 +27,7 @@ NBT 规范与 JSON 规范相似，但存在以下差异：
 
 ## NBT 文件
 
-Minecraft 广泛使用 `.nbt` 文件，例如[数据包](`datapack`)中的结构文件。包含区域（即区块集合）内容的区域文件（`.mca`）以及游戏中各处使用的各种 `.dat` 文件也是 NBT 文件。
+Minecraft 广泛使用 `.nbt` 文件，例如[数据包(`datapack`)][datapack]中的结构文件。包含区域（即区块集合）内容的区域文件（`.mca`）以及游戏中各处使用的各种 `.dat` 文件也是 NBT 文件。
 
 NBT 文件通常使用 GZip 压缩。因此它们是二进制文件，无法直接编辑。
 
@@ -90,7 +90,7 @@ tag.getCompoundOrEmpty("Tag");
 
 ## NBT 的用途
 
-NBT 在 Minecraft 中应用广泛。[**方块实体**](`BlockEntity`)和[**实体**](`Entity`)将 NBT 使用抽象为[**值访问**](`value accesses`)。**物品堆**(`ItemStack`)则将其抽象为[**数据组件**](`data components`)。
+NBT 在 Minecraft 中应用广泛。[**方块实体**(`BlockEntity`)][blockentity]和[**实体**(`Entity`)][entity]将 NBT 使用抽象为**值访问**(`value accesses`)。**物品堆**(`ItemStack`)则将其抽象为[**数据组件**(`data components`)][datacomponents]。
 
 ## 另请参阅
 

@@ -1,6 +1,6 @@
-# **屏幕**(`Screens`)
+﻿# **屏幕**(`Screens`)
 
-**屏幕**(`Screens`)通常是Minecraft中所有**图形用户界面**(`GUIs`)的基础：接收用户输入，在服务器端验证，并将结果操作同步回客户端。它们可以与[菜单](`menus`)结合创建类似物品栏视图的通信网络，也可以作为独立组件由模组开发者通过自己的[网络](`network`)实现处理。
+**屏幕**(`Screens`)通常是Minecraft中所有**图形用户界面**(`GUIs`)的基础：接收用户输入，在服务器端验证，并将结果操作同步回客户端。它们可以与[菜单(`menus`)][menus]结合创建类似物品栏视图的通信网络，也可以作为独立组件由模组开发者通过自己的[网络(`network`)][network]实现处理。
 
 屏幕由多个部分组成，因此很难完全理解Minecraft中"屏幕"的实际含义。因此，本文将在讨论屏幕本身之前，先详细介绍屏幕的各个组件及其应用方式。
 
@@ -16,7 +16,7 @@ GUI渲染分为两个阶段：提交阶段(`submission phase`)和渲染阶段(`r
 
 向渲染状态提交任何内容时，都需要指定元素渲染位置的坐标。经过多层抽象后，Minecraft的大多数渲染调用都接受X和Y坐标：X值从左向右递增，Y值从上向下递增。但这些坐标不固定于特定范围——其范围会根据屏幕尺寸和游戏选项中设置的**GUI缩放比例**(`GUI Scale`)而变化。因此必须特别注意传递给渲染调用的坐标值是否针对可变屏幕尺寸进行了正确缩放——即是否正确相对化(`relativized`)。
 
-关于如何相对化坐标的信息详见[屏幕](`screen`)章节。
+关于如何相对化坐标的信息详见[屏幕(`screen`)][screen]章节。
 
 :::caution
 如果使用固定坐标或不正确缩放屏幕，渲染对象可能显示异常或错位。检查坐标相对化是否正确的简单方法是点击视频设置中的"GUI缩放"按钮。该值在决定GUI渲染比例时，会作为显示器宽高的除数使用。
@@ -181,7 +181,7 @@ graphics.submitGuiElementRenderState(new GuiElementRenderState() {
 
 ## `GuiGraphics`中的方法
 
-`GuiGraphics`包含提交常用渲染对象的方法，分为六类：彩色矩形、字符串、纹理、物品、提示和画中画(`Picture-in-Picture`)。这些方法提交的元素均继承自`pose`的当前位姿，以及基于`enableScissor`/`disableScissor`从`peekScissorStack`获取的裁剪区域。传给方法的颜色必须为[ARGB](`argb`)格式。
+`GuiGraphics`包含提交常用渲染对象的方法，分为六类：彩色矩形、字符串、纹理、物品、提示和画中画(`Picture-in-Picture`)。这些方法提交的元素均继承自`pose`的当前位姿，以及基于`enableScissor`/`disableScissor`从`peekScissorStack`获取的裁剪区域。传给方法的颜色必须为[ARGB][argb]格式。
 
 ### 彩色矩形(`Colored Rectangles`)
 
@@ -197,14 +197,14 @@ graphics.submitGuiElementRenderState(new GuiElementRenderState() {
 
 ### 字符串(`Strings`)
 
-字符串、[`组件`](`Component`s)和`FormattedCharSequence`s使用`GuiTextRenderState`提交。每个字符串通过指定`Font`绘制，使用`GlyphRenderTypes#guiPipeline`创建`BakedGlyph.GlyphInstance`和可选的`BakedGlyph.Effect`。渲染阶段中，文本渲染状态会按字符串字符转换为`GlyphRenderState`和可能的`GlyphEffectRenderState`。
+字符串、[`组件`(`Component`s)][component]和`FormattedCharSequence`s使用`GuiTextRenderState`提交。每个字符串通过指定`Font`绘制，使用`GlyphRenderTypes#guiPipeline`创建`BakedGlyph.GlyphInstance`和可选的`BakedGlyph.Effect`。渲染阶段中，文本渲染状态会按字符串字符转换为`GlyphRenderState`和可能的`GlyphEffectRenderState`。
 
 字符串有两种对齐渲染方式：左对齐(`drawString`)和居中对齐(`drawCenteredString`)。两者均接受渲染字符串的字体、要绘制的字符串、分别代表左/中位置的X坐标、顶部Y坐标和颜色。左对齐字符串还可接受是否绘制文本阴影(`drop shadow`)。
 
 若文本需在边界内换行，可使用`drawWordWrap`；若需矩形背景，则用`drawStringWithBackdrop`。两者默认提交左对齐字符串。
 
 :::note
-字符串通常应作为[`组件`](`Component`s)传递，因其处理多种用例（包括方法的另外两个重载）。
+字符串通常应作为[`组件`(`Component`s)][component]传递，因其处理多种用例（包括方法的另外两个重载）。
 :::
 
 ### 纹理(`Textures`)
@@ -417,7 +417,7 @@ public class ExampleRenderer extends PictureInPictureRenderer<ExampleRenderState
 }
 ```
 
-要使用PiP，渲染器必须在[模组事件总线](`modbus`)的`RegisterPictureInPictureRenderersEvent`中注册：
+要使用PiP，渲染器必须在[模组事件总线(`modbus`)][modbus]的`RegisterPictureInPictureRenderersEvent`中注册：
 
 ```java
 @SubscribeEvent // 在模组事件总线
@@ -535,7 +535,7 @@ public void tick() {
 
 ### 输入处理(`Input Handling`)
 
-因屏幕是`GuiEventListener`子类型，可重写输入处理器（如处理特定[按键](`keymapping`)的逻辑）。
+因屏幕是`GuiEventListener`子类型，可重写输入处理器（如处理特定[按键(`keymapping`)][keymapping]的逻辑）。
 
 ### 渲染屏幕(`Rendering the Screen`)
 
@@ -605,7 +605,7 @@ public void removed() {
 
 ## `AbstractContainerScreen`
 
-若屏幕直接关联[菜单](`menus`)，应子类化`AbstractContainerScreen`。`AbstractContainerScreen`作为菜单的屏幕和输入处理器，包含与槽位同步和交互的逻辑。因此通常只需重写或实现两个方法即可拥有可工作的容器屏幕。为便于理解，将按通常出现顺序介绍容器屏幕组件。
+若屏幕直接关联[菜单(`menus`)][menus]，应子类化`AbstractContainerScreen`。`AbstractContainerScreen`作为菜单的屏幕和输入处理器，包含与槽位同步和交互的逻辑。因此通常只需重写或实现两个方法即可拥有可工作的容器屏幕。为便于理解，将按通常出现顺序介绍容器屏幕组件。
 
 `AbstractContainerScreen`通常需要三个参数：打开的容器菜单（泛型`T`表示）、玩家物品栏（仅用于显示名称）和屏幕标题本身。在此可设置若干定位字段：
 
@@ -719,7 +719,7 @@ protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
 
 ## 注册AbstractContainerScreen
 
-要使`AbstractContainerScreen`与菜单关联使用，需注册。可在[**模组事件总线**](`modbus`)的`RegisterMenuScreensEvent`中调用`register`实现。
+要使`AbstractContainerScreen`与菜单关联使用，需注册。可在[**模组事件总线**(`modbus`)][modbus]的`RegisterMenuScreensEvent`中调用`register`实现。
 
 ```java
 @SubscribeEvent // 仅在物理客户端的模组事件总线

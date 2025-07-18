@@ -1,6 +1,6 @@
-# **纹理**(`Textures`)
+﻿# **纹理**(`Textures`)
 
-Minecraft 中的所有纹理均为 PNG 文件，位于命名空间的 `textures` 文件夹中。不支持 JPG、GIF 等其他图像格式。[资源定位符](`Resource Locations`)[rl]的路径通常相对于 `textures` 文件夹，例如：
+Minecraft 中的所有纹理均为 PNG 文件，位于命名空间的 `textures` 文件夹中。不支持 JPG、GIF 等其他图像格式。[资源定位符(`Resource Locations`)][rl]的路径通常相对于 `textures` 文件夹，例如：
 - `examplemod:block/example_block` 对应 `assets/examplemod/textures/block/example_block.png`
 
 纹理尺寸通常应为 2 的幂（如 16x16 或 32x32）。现代 Minecraft 原生支持大于 16x16 的方块/物品纹理。对于非 2 的幂尺寸的自渲染纹理（如 GUI 背景）：

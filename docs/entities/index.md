@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 1
 ---
 # **实体**(`Entities`)
@@ -423,14 +423,14 @@ graph LR;
 
 - `AbstractArrow`：此类涵盖不同种类的箭以及三叉戟。一个重要的共同属性是它们不会直线飞行，而是受重力影响。
 - `AbstractHurtingProjectile`：此类涵盖风弹、各种火球和凋灵骷髅头。这些是造成伤害的抛射物，不受重力影响。
-- `ThrowableProjectile`：此类涵盖鸡蛋、雪球和末影珍珠等。像箭一样，它们受重力影响，但与箭不同，它们在击中目标时不会造成伤害。它们都是通过使用相应的[物品](`item`)生成的。
+- `ThrowableProjectile`：此类涵盖鸡蛋、雪球和末影珍珠等。像箭一样，它们受重力影响，但与箭不同，它们在击中目标时不会造成伤害。它们都是通过使用相应的[物品(`item`)][item]生成的。
 
 可以通过扩展 `Projectile` 或合适的子类，然后覆盖添加功能所需的方法来创建新的抛射物。通常覆盖的方法包括：
 
 - `#shoot`：计算并设置抛射物上的正确速度。
 - `#onHit`：当某物被击中时调用。
-    - `#onHitEntity`：当某物是[实体](`entity`)时调用。
-    - `#onHitBlock`：当某物是[方块](`block`)时调用。
+    - `#onHitEntity`：当某物是[实体(`entity`)][entity]时调用。
+    - `#onHitBlock`：当某物是[方块(`block`)][block]时调用。
 - `#getOwner` 和 `#setOwner`，分别用于获取和设置所有者实体。
 - `#deflect`，根据传入的 `ProjectileDeflection` 枚举值偏转抛射物。
 - `#onDeflection`，从 `#deflect` 调用，用于任何偏转后的行为。

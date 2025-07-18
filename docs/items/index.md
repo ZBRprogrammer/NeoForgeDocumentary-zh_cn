@@ -1,17 +1,17 @@
-# **物品**(`Items`)
+﻿# **物品**(`Items`)
 
 与**方块**(`Blocks`)类似，**物品**(`Items`)是Minecraft的核心组成部分。方块构成周围世界，而物品存在于**物品栏**(`inventories`)中。
 
 ## 物品是什么？(`What Even Is an Item?`)
 
-深入创建物品前，理解物品本质及其与[方块](`block`)的区别至关重要。以下示例说明：
+深入创建物品前，理解物品本质及其与[方块(`block`)][block]的区别至关重要。以下示例说明：
 
-- 世界中遇到泥土方块并挖掘时，它是**方块**(`block`)，因其放置在世界中（实际是**方块状态**(`blockstate`)，详见[方块状态文章](`blockstates`)）。
-    - 并非所有方块被破坏时掉落自身（如树叶），详见[战利品表文章](`loottables`)。
-- [破坏方块](`breaking`)后，方块被移除（替换为空气方块），泥土作为**物品实体**(`item entity`)掉落。这意味着它可被水推动或火/熔岩燃烧（类似猪、僵尸、箭等实体）。
+- 世界中遇到泥土方块并挖掘时，它是**方块**(`block`)，因其放置在世界中（实际是**方块状态**(`blockstate`)，详见[方块状态(`blockstates`)文章][blockstates]）。
+    - 并非所有方块被破坏时掉落自身（如树叶），详见[战利品表(`loottables`)文章][loottables]。
+- [破坏方块(`breaking`)][breaking]后，方块被移除（替换为空气方块），泥土作为**物品实体**(`item entity`)掉落。这意味着它可被水推动或火/熔岩燃烧（类似猪、僵尸、箭等实体）。
 - 拾取泥土物品实体后，它成为物品栏中的**物品堆**(`item stack`)。物品堆本质上是物品实例及其额外信息（如堆叠数量）。
-- 物品堆由其对应的**物品**(`item`)（我们将创建）支持。物品持有[数据组件](`datacomponents`)，包含所有物品堆初始化的默认信息（如所有铁剑耐久度为250）。物品堆可修改这些数据组件，使相同物品的不同堆拥有不同信息（如一把铁剑剩余100耐久，另一把剩余200）。更多信息详见后续内容。
-    - 物品与物品堆的关系类似[方块](`block`)与[方块状态](`blockstates`)（方块状态始终由方块支持）。此比喻虽不精确（物品堆非单例），但有助于理解核心概念。
+- 物品堆由其对应的**物品**(`item`)（我们将创建）支持。物品持有[数据组件][datacomponents]，包含所有物品堆初始化的默认信息（如所有铁剑耐久度为250）。物品堆可修改这些数据组件，使相同物品的不同堆拥有不同信息（如一把铁剑剩余100耐久，另一把剩余200）。更多信息详见后续内容。
+    - 物品与物品堆的关系类似[方块][block]与[方块状态][blockstates]（方块状态始终由方块支持）。此比喻虽不精确（物品堆非单例），但有助于理解核心概念。
 
 ## 创建物品(`Creating an Item`)
 
@@ -29,7 +29,7 @@
 - `rarity` - 设置物品稀有度（通过`DataComponents#RARITY`）。目前仅改变物品颜色：`COMMON`（白色，默认）、`UNCOMMON`（黄色）、`RARE`（青色）、`EPIC`（浅紫色）。注意模组可能添加更多稀有度类型。
 - `setNoCombineRepair` - 禁用砂轮和合成格修复（原版未使用）。
 - `jukeboxPlayable` - 设置插入唱片机时播放的数据包`JukeboxSong`资源键。
-- `food` - 设置物品的[`FoodProperties`](`food`)（通过`DataComponents#FOOD`）。
+- `food` - 设置物品的[`FoodProperties`][food]（通过`DataComponents#FOOD`）。
 
 示例或原版值参考`Items`类。
 
@@ -43,9 +43,9 @@
 
 ### 工具与护甲(`Tools and Armor`)
 
-部分物品作为[工具](`tools`)和[护甲](`armor`)使用。通过一系列物品属性构建，部分功能委托给关联类：
+部分物品作为[工具][tools]和[护甲][armor]使用。通过一系列物品属性构建，部分功能委托给关联类：
 
-- `enchantable` - 设置堆叠的最大[附魔](`enchantment`)值（通过`DataComponents#ENCHANTABLE`），允许物品附魔。
+- `enchantable` - 设置堆叠的最大[附魔][enchantment]值（通过`DataComponents#ENCHANTABLE`），允许物品附魔。
 - `repairable` - 设置可修复物品耐久的物品或标签（通过`DataComponents#REPAIRABLE`）。必须有耐久组件且非`DataComponents#UNBREAKABLE`。
 - `equippable` - 设置可装备的槽位（通过`DataComponents#EQUIPPABLE`）。
 - `equippableUnswappable` - 同`equippable`，但禁用使用物品按钮（默认右键）快速交换。
@@ -56,7 +56,7 @@
 
 直接使用`Item`仅支持基础物品。如需添加功能（如右键交互），需扩展`Item`的自定义类。`Item`类有许多可重写方法，详见`Item`和`IItemExtension`类。
 
-物品最常见的两种用例是左键和右键点击。因其复杂性和跨系统特性，在单独的[交互文章](`interactions`)中说明。
+物品最常见的两种用例是左键和右键点击。因其复杂性和跨系统特性，在单独的[交互(`interactions`)文章][interactions]中说明。
 
 ### `DeferredRegister.Items`
 
@@ -131,9 +131,9 @@ public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerS
 
 ### **资源**(`Resources`)
 
-注册物品后通过`/give`或[创造模式标签页](`creativetabs`)获取，会发现缺少模型和纹理。因纹理和模型由Minecraft资源系统处理。
+注册物品后通过`/give`或[创造模式标签页(`creativetabs`)][creativetabs]获取，会发现缺少模型和纹理。因纹理和模型由Minecraft资源系统处理。
 
-为物品应用简单纹理需创建客户端物品、模型JSON和纹理PNG。详见[客户端物品](`citems`)部分。
+为物品应用简单纹理需创建客户端物品、模型JSON和纹理PNG。详见[客户端物品(`citems`)][citems]部分。
 
 ## **物品堆**(`ItemStack`s)
 
@@ -142,7 +142,7 @@ public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerS
 `ItemStack`包含三部分：
 - 代表的`Item`（通过`ItemStack#getItem`获取，或`getItemHolder`获取`Holder<Item>`）。
 - 堆叠数量（通常1-64），通过`getCount`获取，`setCount`或`shrink`修改。
-- [数据组件](`datacomponents`)映射，存储堆叠特定数据（通过`getComponents`获取）。通常通过`has`、`get`、`set`、`update`和`remove`访问和修改组件值。
+- [数据组件][datacomponents]映射，存储堆叠特定数据（通过`getComponents`获取）。通常通过`has`、`get`、`set`、`update`和`remove`访问和修改组件值。
 
 创建新`ItemStack`调用`new ItemStack(Item)`（传入支撑物品）。默认数量1且无NBT数据；有重载构造函数接受数量和NBT数据。
 
@@ -162,7 +162,7 @@ public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerS
 
 ### **JSON表示**(`JSON Representation`)
 
-许多场合（如[配方](`recipes`)）需将物品堆表示为JSON对象：
+许多场合（如[配方(`recipes`)][recipes]）需将物品堆表示为JSON对象：
 
 ```json5
 {
@@ -189,7 +189,7 @@ public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerS
 此方法用于将物品添加到Minecraft或其他模组的标签页。添加到自己标签页见下文。
 :::
 
-通过[模组事件总线](`modbus`)（仅[逻辑客户端](`sides`)）的`BuildCreativeModeTabContentsEvent`将物品添加到现有`CreativeModeTab`。调用`event#accept`添加物品。
+通过[模组事件总线][modbus]（仅[逻辑客户端][sides]）的`BuildCreativeModeTabContentsEvent`将物品添加到现有`CreativeModeTab`。调用`event#accept`添加物品。
 
 ```java
 // MyItemsClass.MY_ITEM是Supplier<? extends Item>，MyBlocksClass.MY_BLOCK是Supplier<? extends Block>
@@ -208,7 +208,7 @@ public static void buildContents(BuildCreativeModeTabContentsEvent event) {
 
 ### 自定义创造模式标签页(`Custom Creative Tabs`)
 
-`CreativeModeTab`是注册表，自定义`CreativeModeTab`必须[注册](`registering`)。创建创造标签页使用构建器系统（通过`CreativeModeTab#builder`获取）。构建器提供设置标题、图标、默认物品及其他属性的选项。NeoForge额外提供方法定制标签页图像、标签和槽位颜色、排序位置等。
+`CreativeModeTab`是注册表，自定义`CreativeModeTab`必须[注册][registering]。创建创造标签页使用构建器系统（通过`CreativeModeTab#builder`获取）。构建器提供设置标题、图标、默认物品及其他属性的选项。NeoForge额外提供方法定制标签页图像、标签和槽位颜色、排序位置等。
 
 ```java
 // CREATIVE_MODE_TABS是DeferredRegister<CreativeModeTab>
@@ -229,7 +229,7 @@ public static final Supplier<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.r
 
 ## `ItemLike`
 
-`ItemLike`是`Item`和原版[方块](`block`)实现的接口。定义`#asItem`方法，返回对象的物品表示：`Item`返回自身，`Block`返回关联的`BlockItem`（若有），否则返回`Blocks.AIR`。`ItemLike`用于物品"来源"不重要的场合（如许多[数据生成器](`datagen`)）。
+`ItemLike`是`Item`和原版[方块][block]实现的接口。定义`#asItem`方法，返回对象的物品表示：`Item`返回自身，`Block`返回关联的`BlockItem`（若有），否则返回`Blocks.AIR`。`ItemLike`用于物品"来源"不重要的场合（如许多[数据生成器][datagen]）。
 
 也可在自定义对象上实现`ItemLike`，重写`#asItem`即可。
 

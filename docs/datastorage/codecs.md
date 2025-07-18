@@ -1,9 +1,9 @@
----
+﻿---
 sidebar_position: 2
 ---
 # **编解码器**(`Codecs`)
 
-编解码器是 Mojang [**DataFixerUpper**](`DataFixerUpper`) 中的序列化工具，用于描述对象如何在不同格式之间转换，例如用于 JSON 的 `JsonElement` 和用于 NBT 的 `Tag`。
+编解码器是 Mojang [**DataFixerUpper**(`DataFixerUpper`)][DataFixerUpper] 中的序列化工具，用于描述对象如何在不同格式之间转换，例如用于 JSON 的 `JsonElement` 和用于 NBT 的 `Tag`。
 
 ## 使用编解码器
 
@@ -13,7 +13,7 @@ sidebar_position: 2
 
 要确定编码和解码使用的中间文件格式，`#encodeStart` 和 `#parse` 都需要一个 `DynamicOps` 实例来定义该格式中的数据。
 
-[**DataFixerUpper**](`DataFixerUpper`) 库包含 `JsonOps`，用于编解码存储在 [`Gson`](`gson`) 的 `JsonElement` 实例中的 JSON 数据。`JsonOps` 支持两种 `JsonElement` 序列化版本：`JsonOps#INSTANCE` 定义标准 JSON 文件，`JsonOps#COMPRESSED` 允许将数据压缩为单个字符串。
+[**DataFixerUpper**(`DataFixerUpper`)][DataFixerUpper] 库包含 `JsonOps`，用于编解码存储在 [`Gson`][gson] 的 `JsonElement` 实例中的 JSON 数据。`JsonOps` 支持两种 `JsonElement` 序列化版本：`JsonOps#INSTANCE` 定义标准 JSON 文件，`JsonOps#COMPRESSED` 允许将数据压缩为单个字符串。
 
 ```java
 // Let exampleCodec represent a Codec<ExampleJavaObject>
@@ -45,7 +45,7 @@ exampleCodec.encodeStart(NbtOps.INSTANCE, exampleObject);
 exampleCodec.parse(NbtOps.INSTANCE, exampleNbt);
 ```
 
-为处理注册表条目，Minecraft 提供 `RegistryOps`，它包含一个查找提供器(`lookup provider`)以获取可用注册表元素。可通过 `RegistryOps#create` 创建，该方法接收存储数据的特定类型的 `DynamicOps` 和包含可用注册表访问权限的查找提供器。NeoForge 扩展了 `RegistryOps` 以创建 `ConditionalOps`：一种可处理[条目加载条件](`conditions`)的注册表编解码器查找器。
+为处理注册表条目，Minecraft 提供 `RegistryOps`，它包含一个查找提供器(`lookup provider`)以获取可用注册表元素。可通过 `RegistryOps#create` 创建，该方法接收存储数据的特定类型的 `DynamicOps` 和包含可用注册表访问权限的查找提供器。NeoForge 扩展了 `RegistryOps` 以创建 `ConditionalOps`：一种可处理[条目加载条件(`conditions`)][conditions]的注册表编解码器查找器。
 
 ```java
 // Let lookupProvider be a HolderLookup.Provider
@@ -350,7 +350,7 @@ public static final Codec<List<BlockPos>> LIST_CODEC = BlockPos.CODEC.listOf();
 ]
 ```
 
-使用列表编解码器解码的列表对象存储在**不可变**列表中。若需要可变列表，应对列表编解码器应用[转换器](`transformer`)。
+使用列表编解码器解码的列表对象存储在**不可变**列表中。若需要可变列表，应对列表编解码器应用[转换器(`transformer`)][transformer]。
 
 ### **映射**(`Map`)
 
@@ -370,17 +370,17 @@ public static final Codec<Map<String, BlockPos>> MAP_CODEC = Codec.unboundedMap(
 }
 ```
 
-使用无界映射编解码器解码的映射对象存储在**不可变**映射中。若需要可变映射，应对映射编解码器应用[转换器](`transformer`)。
+使用无界映射编解码器解码的映射对象存储在**不可变**映射中。若需要可变映射，应对映射编解码器应用[转换器(`transformer`)][transformer]。
 
 :::caution
-无界映射仅支持编码/解码为字符串的键。可通过键值[对](`pair`)列表编解码器绕过此限制。
+无界映射仅支持编码/解码为字符串的键。可通过键值[对(`pair`)][pair]列表编解码器绕过此限制。
 :::
 
 ### **对**(`Pair`)
 
 可通过两个编解码器使用 `Codec#pair` 生成对象对的编解码器。
 
-对编解码器通过首先解码对中的左侧对象，然后获取编码对象的剩余部分并从中解码右侧对象来解码对象。因此，编解码器必须在解码后表达编码对象的某些内容（如[记录](`records`)），或需增强为 `MapCodec` 并通过 `#codec` 转换为常规编解码器。通常可通过使编解码器成为某个对象的[字段](`field`)实现。
+对编解码器通过首先解码对中的左侧对象，然后获取编码对象的剩余部分并从中解码右侧对象来解码对象。因此，编解码器必须在解码后表达编码对象的某些内容（如[记录(`records`)][records]），或需增强为 `MapCodec` 并通过 `#codec` 转换为常规编解码器。通常可通过使编解码器成为某个对象的[字段](`field`)实现。
 
 ```java
 public static final Codec<Pair<Integer, String>> PAIR_CODEC = Codec.pair(
@@ -398,7 +398,7 @@ public static final Codec<Pair<Integer, String>> PAIR_CODEC = Codec.pair(
 ```
 
 :::tip
-可使用键值对列表应用[转换器](`transformer`)来编码/解码具有非字符串键的映射编解码器。
+可使用键值对列表应用[转换器(`transformer`)][transformer]来编码/解码具有非字符串键的映射编解码器。
 :::
 
 ### **任一**(`Either`)
@@ -423,12 +423,12 @@ public static final Codec<Either<Integer, String>> EITHER_CODEC = Codec.either(
 ```
 
 :::tip
-可结合[转换器](`transformer`)使用，以通过两种不同编码方法获取特定对象。
+可结合[转换器(`transformer`)][transformer]使用，以通过两种不同编码方法获取特定对象。
 :::
 
 #### **异或**(`Xor`)
 
-`Codec#xor` 是[任一](`either`)编解码器的特例，仅当两种方法之一成功处理时才返回成功结果。若两者均可处理，则抛出错误。
+`Codec#xor` 是[任一(`either`)][either]编解码器的特例，仅当两种方法之一成功处理时才返回成功结果。若两者均可处理，则抛出错误。
 
 ```java
 public static final Codec<Either<Integer, String>> XOR_CODEC = Codec.xor(
@@ -457,7 +457,7 @@ public static final Codec<Either<Integer, String>> XOR_CODEC = Codec.xor(
 
 #### **替代**(`Alternative`)
 
-`Codec#withAlternative` 是[任一](`either`)编解码器的特例，两者均尝试解码同一对象但存储格式不同。首先尝试主编解码器解码对象，失败时使用第二个编解码器。编码始终使用主编解码器。
+`Codec#withAlternative` 是[任一(`either`)][either]编解码器的特例，两者均尝试解码同一对象但存储格式不同。首先尝试主编解码器解码对象，失败时使用第二个编解码器。编码始终使用主编解码器。
 
 ```java
 public static final Codec<BlockPos> ALTERNATIVE_CODEC = Codec.withAlternative(

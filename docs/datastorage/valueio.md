@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # **值输入输出**(`Value I/O`)
 
-**值输入输出**(`Value I/O`)系统是标准化序列化方法，用于操作某些底层对象（如 NBT 的[**复合标签**](`CompoundTag`)）的数据。
+**值输入输出**(`Value I/O`)系统是标准化序列化方法，用于操作某些底层对象（如 NBT 的**复合标签**(`CompoundTag`)）的数据。
 
 ## 输入与输出
 
@@ -94,7 +94,7 @@ protected void loadAdditional(ValueInput input) {
 
 ### **编解码器**(`Codecs`)
 
-[**编解码器**](`Codec`)也可用于在值 I/O 中存储和读取值。在原版中，所有 `Codec` 均通过 `RegistryOps` 处理（支持存储数据包条目）。`ValueOutput#store` 和 `storeNullable` 接收键、写入对象的编解码器及对象本身。`storeNullable` 在对象为 `null` 时不写入任何内容。`ValueInput#read` 可通过接收键和编解码器读取对象，返回 `Optional` 包装的对象。
+[**编解码器**(`Codec`)][codec]也可用于在值 I/O 中存储和读取值。在原版中，所有 `Codec` 均通过 `RegistryOps` 处理（支持存储数据包条目）。`ValueOutput#store` 和 `storeNullable` 接收键、写入对象的编解码器及对象本身。`storeNullable` 在对象为 `null` 时不写入任何内容。`ValueInput#read` 可通过接收键和编解码器读取对象，返回 `Optional` 包装的对象。
 
 ```java
 // For some BlockEntity subclass
@@ -149,7 +149,7 @@ protected void loadAdditional(ValueInput input) {
 
 ### **列表**(`Lists`)
 
-可通过两种方法创建和读取列表：子值 I/O 或[**编解码器**](`Codec`)。
+可通过两种方法创建和读取列表：子值 I/O 或[**编解码器**(`Codec`)][codec]。
 
 通过 `ValueOutput#childrenList` 创建列表（接收键）。返回 `ValueOutput.ValueOutputList`（作为值对象的只写列表）。通过 `ValueOutputList#addChild` 添加新值对象到列表，返回 `ValueOutput` 以写入值对象数据。然后可通过 `ValueInput#childrenList` 或 `childrenListOrEmpty`（不存在时默认为空列表）读取列表。这些方法返回 `ValueInput.ValueInputList`（作为只读可迭代对象或流，通过 `stream` 访问）。
 
@@ -275,7 +275,7 @@ protected void loadAdditional(ValueInput input) {
 
 ## ValueIOSerializable
 
-`ValueIOSerializable` 是 NeoForge 新增接口，用于可通过值 I/O 序列化和反序列化的对象。NeoForge 使用此 API 处理[**数据附件**](`data attachments`)。接口提供两个方法：`serialize`（将对象写入 `ValueOutput`）和 `deserialize`（从 `ValueInput` 读取对象）。
+`ValueIOSerializable` 是 NeoForge 新增接口，用于可通过值 I/O 序列化和反序列化的对象。NeoForge 使用此 API 处理[**数据附件**(`data attachments`)][attachments]。接口提供两个方法：`serialize`（将对象写入 `ValueOutput`）和 `deserialize`（从 `ValueInput` 读取对象）。
 
 ```java
 public class ExampleObject implements ValueIOSerializable {
@@ -296,7 +296,7 @@ public class ExampleObject implements ValueIOSerializable {
 
 ### NBT
 
-[NBT](`nbt`) 的值 I/O 通过 `TagValueOutput` 和 `TagValueInput` 处理。
+[NBT(`nbt`)][nbt] 的值 I/O 通过 `TagValueOutput` 和 `TagValueInput` 处理。
 
 `TagValueOutput` 可通过 `createWithContext` 或 `createWithoutContext` 创建。`createWithContext` 表示输出可访问 `HolderLookup.Provider`（提供所有注册表条目，包括静态和数据包条目），而 `createWithoutContext` 不提供任何数据包访问。原版仅使用 `createWithContext`。使用 `ValueOutput` 后，可通过 `TagValueOutput#buildResult` 获取 `CompoundTag`。`TagValueInput` 则通过 `create` 创建（接收 `HolderLookup.Provider` 和输入访问的 `CompoundTag`）。
 

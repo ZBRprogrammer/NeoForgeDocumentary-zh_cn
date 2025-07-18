@@ -1,4 +1,4 @@
-# NeoForge 入门指南
+﻿# NeoForge 入门指南
 
 本节包含如何设置 NeoForge 工作区，以及如何运行和测试模组的信息。
 
@@ -45,7 +45,7 @@
 接受后，服务器将加载并在`localhost`（默认`127.0.0.1`）可用。但仍无法加入，因为服务器默认开启**在线模式**（`online mode`），需要身份验证（开发环境玩家不具备）。解决方法：停止服务器，在`server.properties`文件中将`online-mode`设为`false`。重启服务器即可连接。
 
 :::tip
-务必在专用服务器环境测试模组。这包括[**纯客户端模组**](`client-only mods`)[client]，因其在服务器加载时应无任何操作。
+务必在专用服务器环境测试模组。这包括[**纯客户端模组**(`client-only mods`)][client]，因其在服务器加载时应无任何操作。
 :::
 
 [client]: ../concepts/sides.md

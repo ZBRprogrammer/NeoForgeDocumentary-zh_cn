@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 2
 ---
 
@@ -56,7 +56,7 @@ public class ExampleClass {
 
 标准`DataComponentType`可通过`DataComponentType#builder`创建，并用`DataComponentType.Builder#build`构建。构建器包含三个设置：`persistent`、`networkSynchronized`、`cacheEncoding`。
 
-`persistent`指定用于读写组件值到磁盘的[`Codec`](`codec`)。`networkSynchronized`指定用于网络传输读写组件的`StreamCodec`。若未指定`networkSynchronized`，则`persistent`提供的`Codec`将被包装为[`StreamCodec`](`streamcodec`)使用。
+`persistent`指定用于读写组件值到磁盘的[`Codec`][codec]。`networkSynchronized`指定用于网络传输读写组件的`StreamCodec`。若未指定`networkSynchronized`，则`persistent`提供的`Codec`将被包装为[`StreamCodec`][streamcodec]使用。
 
 :::warning
 构建器中必须提供`persistent`或`networkSynchronized`，否则会抛出`NullPointerException`。若无数据需网络传输，将`networkSynchronized`设为`StreamCodec#unit`（提供默认组件值）。
@@ -64,7 +64,7 @@ public class ExampleClass {
 
 `cacheEncoding`缓存`Codec`编码结果，使组件值未更改时后续编码使用缓存值。仅当组件值预期极少或永不更改时使用。
 
-`DataComponentType`是注册对象，必须[注册](`registered`)。
+`DataComponentType`是注册对象，必须[注册][registered]。
 
 ```java
 // 使用ExampleRecord(int, boolean)
@@ -216,7 +216,7 @@ public static final Item COMPONENT_EXAMPLE = REGISTRAR.register("component",
 );
 ```
 
-若需向原版或其他模组的已有物品添加数据组件，应在[**模组事件总线**](`modbus`)监听`ModifyDefaultComponentEvent`。事件提供`modify`和`modifyMatching`方法，允许修改关联物品的`DataComponentPatch.Builder`。构建器可`#set`组件或`#remove`现有组件。
+若需向原版或其他模组的已有物品添加数据组件，应在[**模组事件总线**(`modbus`)][modbus]监听`ModifyDefaultComponentEvent`。事件提供`modify`和`modifyMatching`方法，允许修改关联物品的`DataComponentPatch.Builder`。构建器可`#set`组件或`#remove`现有组件。
 
 ```java
 @SubscribeEvent // 在模组事件总线
@@ -319,7 +319,7 @@ public class ExampleHolder implements MutableDataComponentHolder {
 }
 ```
 
-[网络同步持有者数据](`network`)及磁盘读写需手动完成。
+[网络同步持有者数据(`network`)][network]及磁盘读写需手动完成。
 
 [registered]: ../concepts/registries.md
 [codec]: ../datastorage/codecs.md

@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 5
 ---
 
@@ -7,16 +7,16 @@ import TabItem from '@theme/TabItem';
 
 # **护甲**(`Armor`)
 
-**护甲**(`Armor`)是主要用途为通过多种抗性和效果保护[`LivingEntity`](`livingentity`)免受伤害的[物品](`item`)。许多模组添加新护甲套装（例如铜护甲）。
+**护甲**(`Armor`)是主要用途为通过多种抗性和效果保护[`LivingEntity`][livingentity]免受伤害的[物品(`item`)][item]。许多模组添加新护甲套装（例如铜护甲）。
 
 ## 自定义护甲套装(`Custom Armor Sets`)
 
-人形实体的护甲套装通常包含四件物品：头部头盔、胸部胸甲、腿部护腿和脚部靴子。还有适用于狼、马和羊驼的"身体"护甲槽位的护甲。所有这些物品通常通过七个[数据组件](`datacomponents`)实现：
+人形实体的护甲套装通常包含四件物品：头部头盔、胸部胸甲、腿部护腿和脚部靴子。还有适用于狼、马和羊驼的"身体"护甲槽位的护甲。所有这些物品通常通过七个[数据组件(`datacomponents`)][datacomponents]实现：
 
 - `DataComponents#MAX_DAMAGE`和`#DAMAGE`用于耐久度
 - `#MAX_STACK_SIZE`设置堆叠大小为`1`
 - `#REPAIRABLE`用于铁砧修复护甲
-- `#ENCHANTABLE`设置最大[附魔](`enchantment`)值
+- `#ENCHANTABLE`设置最大[附魔(`enchantment`)][enchantment]值
 - `#ATTRIBUTE_MODIFIERS`提供护甲值、护甲韧性和击退抗性
 - `#EQUIPPABLE`定义实体如何装备物品
 
@@ -60,7 +60,7 @@ public static final ArmorMaterial COPPER_ARMOR_MATERIAL = new ArmorMaterial(
 );
 ```
 
-创建`ArmorMaterial`后，可用于[注册](`registering`)护甲：
+创建`ArmorMaterial`后，可用于[注册(`registering`)][registering]护甲：
 
 ```java
 // ITEMS是DeferredRegister.Items
@@ -148,7 +148,7 @@ public static final DeferredItem<Item> EQUIPPABLE = ITEMS.registerSimpleItem(
 
 ## **装备资源**(`Equipment Assets`)
 
-游戏中有护甲后，穿戴时不会渲染（因未指定渲染方式）。需在[资源包](`respack`)的`equipment`文件夹（`assets`目录）创建`EquipmentClientInfo` JSON，位置由`Equippable#assetId`指定。`EquipmentClientInfo`定义每个渲染层使用的关联纹理。
+游戏中有护甲后，穿戴时不会渲染（因未指定渲染方式）。需在[资源包(`respack`)][respack]的`equipment`文件夹（`assets`目录）创建`EquipmentClientInfo` JSON，位置由`Equippable#assetId`指定。`EquipmentClientInfo`定义每个渲染层使用的关联纹理。
 
 `EquipmentClientInfo`功能上是`EquipmentClientInfo.LayerType`到`EquipmentClientInfo.Layer`列表的映射。
 
@@ -156,10 +156,10 @@ public static final DeferredItem<Item> EQUIPPABLE = ITEMS.registerSimpleItem(
 
 `LayerType`映射到要按顺序应用渲染的`Layer`列表。`Layer`代表单个要渲染的纹理。第一个参数是纹理位置（相对于`textures/entity/equipment`）。
 
-第二个参数是可选的[可染色](`tinting`)标记（作为`EquipmentClientInfo.Dyeable`）。`Dyeable`包含未染色时的默认RGB颜色。未设置时使用纯白色。
+第二个参数是可选的[可染色(`tinting`)][tinting]标记（作为`EquipmentClientInfo.Dyeable`）。`Dyeable`包含未染色时的默认RGB颜色。未设置时使用纯白色。
 
 :::warning
-要使染色生效，物品必须在[`ItemTags#DYEABLE`](`tag`)中且设置`DataComponents#DYED_COLOR`为RGB值。
+要使染色生效，物品必须在[`ItemTags#DYEABLE`][tag]中且设置`DataComponents#DYED_COLOR`为RGB值。
 :::
 
 第三个参数是布尔值，指示是否使用渲染时传入的纹理替代`Layer`内定义的纹理（如玩家自定义披风或鞘翅纹理）。

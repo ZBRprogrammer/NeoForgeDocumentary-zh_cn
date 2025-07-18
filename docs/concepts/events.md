@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 3
 ---
 import Tabs from '@theme/Tabs';
@@ -162,9 +162,9 @@ public static void mobDespawn(MobDespawnEvent event) {
 
 ### 端特定事件
 
-某些事件仅在单一[端](`side`)[side]触发。常见示例包括各种渲染事件，它们仅在客户端触发。由于仅客户端事件通常需要访问 Minecraft 代码库中其他仅客户端部分，因此需要相应注册。
+某些事件仅在单一[端(`side`)][side]触发。常见示例包括各种渲染事件，它们仅在客户端触发。由于仅客户端事件通常需要访问 Minecraft 代码库中其他仅客户端部分，因此需要相应注册。
 
-使用 `IEventBus#addListener()` 的事件处理器应通过 `FMLEnvironment.dist` 或模组构造函数中的 `Dist` 参数检查当前物理端，并在单独的仅客户端类中添加监听器，如[端](`sides`)[side]一文中所述。
+使用 `IEventBus#addListener()` 的事件处理器应通过 `FMLEnvironment.dist` 或模组构造函数中的 `Dist` 参数检查当前物理端，并在单独的仅客户端类中添加监听器，如[端(`sides`)][side]一文中所述。
 
 使用 `@EventBusSubscriber` 的事件处理器可将端指定为注解的 `value` 参数，例如 `@EventBusSubscriber(value = Dist.CLIENT, modid = "yourmodid")`。
 
@@ -185,7 +185,7 @@ public static void mobDespawn(MobDespawnEvent event) {
 - 触发 `FMLConstructModEvent`。
 - 触发注册表事件，包括 [`NewRegistryEvent`][newregistry]、[`DataPackRegistryEvent.NewRegistry`][newdatapackregistry] 及每个注册表的 [`RegisterEvent`][registerevent]。
 - 触发 `FMLCommonSetupEvent`。此处进行各种杂项设置。
-- 触发[端](`side`)[side]特定设置：物理客户端触发 `FMLClientSetupEvent`，物理服务端触发 `FMLDedicatedServerSetupEvent`。
+- 触发[端(`side`)][side]特定设置：物理客户端触发 `FMLClientSetupEvent`，物理服务端触发 `FMLDedicatedServerSetupEvent`。
 - 处理 `InterModComms`（见下文）。
 - 触发 `FMLLoadCompleteEvent`。
 

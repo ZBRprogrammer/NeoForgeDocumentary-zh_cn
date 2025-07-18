@@ -5,7 +5,7 @@ sidebar_position: 5
 
 **保存的数据**(`Saved Data, SD`)系统可用于在**世界层级**(`levels`)上保存额外数据。
 
-_若数据特定于某些方块实体、区块或实体，请考虑改用[**数据附件**](`data attachment`)。_
+_若数据特定于某些方块实体、区块或实体，请考虑改用**数据附件**(`data attachment`)。_
 
 ## `SavedData`
 
@@ -25,7 +25,7 @@ public class ExampleSavedData extends SavedData {
 
 ## `SavedDataType`
 
-由于 `SavedData` 仅为对象，需有某种关联标识符。此外还需将数据读写到磁盘，这就是 `SavedDataType` 的作用。它接收保存数据的标识符、无数据时的默认构造函数，以及用于编码/解码数据的[**编解码器**](`codec`)。标识符被视为世界文件夹和世界维度内的路径位置：`./<world_folder>/<level_name>/data/<identifier>.dat`。所有缺失目录（包括标识符中的目录）都会被创建。
+由于 `SavedData` 仅为对象，需有某种关联标识符。此外还需将数据读写到磁盘，这就是 `SavedDataType` 的作用。它接收保存数据的标识符、无数据时的默认构造函数，以及用于编码/解码数据的[**编解码器**(`codec`)][codec]。标识符被视为世界文件夹和世界维度内的路径位置：`./<world_folder>/<level_name>/data/<identifier>.dat`。所有缺失目录（包括标识符中的目录）都会被创建。
 
 :::note
 `SavedDataType` 有第四个参数 `DataFixTypes`，但因 NeoForge 不支持**数据修复器**(`data fixers`)，所有原版用例已修补为允许空值。
