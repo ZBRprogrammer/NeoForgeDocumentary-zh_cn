@@ -380,7 +380,7 @@ public static final Codec<Map<String, BlockPos>> MAP_CODEC = Codec.unboundedMap(
 
 可通过两个编解码器使用 `Codec#pair` 生成对象对的编解码器。
 
-对编解码器通过首先解码对中的左侧对象，然后获取编码对象的剩余部分并从中解码右侧对象来解码对象。因此，编解码器必须在解码后表达编码对象的某些内容（如[记录(`records`)][records]），或需增强为 `MapCodec` 并通过 `#codec` 转换为常规编解码器。通常可通过使编解码器成为某个对象的[字段](`field`)实现。
+对编解码器通过首先解码对中的左侧对象，然后获取编码对象的剩余部分并从中解码右侧对象来解码对象。因此，编解码器必须在解码后表达编码对象的某些内容（如[记录(`records`)][records]），或需增强为 `MapCodec` 并通过 `#codec` 转换为常规编解码器。通常可通过使编解码器成为某个对象的[字段(`field`)][field]实现。
 
 ```java
 public static final Codec<Pair<Integer, String>> PAIR_CODEC = Codec.pair(

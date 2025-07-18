@@ -1,9 +1,9 @@
-import Tabs from '@theme/Tabs';
+﻿import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # **游戏测试**(`Game Tests`)
 
-游戏测试是运行游戏内单元测试的方法。该系统设计为可扩展且并行运行，能高效处理大量测试。其应用广泛，包括测试对象交互和行为等。支持全代码或[数据包](datapacks)实现，下文将展示两种方式。
+游戏测试是运行游戏内单元测试的方法。该系统设计为可扩展且并行运行，能高效处理大量测试。其应用广泛，包括测试对象交互和行为等。支持全代码或[数据包][datapacks]实现，下文将展示两种方式。
 
 ## 创建游戏测试
 
@@ -388,7 +388,7 @@ bootstrap.register(
 
 ## 测试函数
 
-游戏测试核心是运行接收 `GameTestHelper` 的函数。通过调用 `GameTestHelper` 方法决定测试成功/失败。测试函数需[注册](registered)：
+游戏测试核心是运行接收 `GameTestHelper` 的函数。通过调用 `GameTestHelper` 方法决定测试成功/失败。测试函数需[注册][registered]：
 
 ```java
 public class ExampleFunctions {

@@ -1,4 +1,4 @@
-# **NeoForge 更新检查器**(`NeoForge Update Checker`)
+﻿# **NeoForge 更新检查器**(`NeoForge Update Checker`)
 
 NeoForge 提供轻量级、可选的更新检查框架。当模组有可用更新时，主菜单和模组列表的"模组"按钮将显示闪烁图标及更新日志。**不会**自动下载更新。
 
@@ -30,10 +30,10 @@ JSON 格式如下：
 
 注意事项：
 - `homepage` 链接在模组过时展示给用户
-- NeoForge 内部算法比较版本号新旧，推荐遵循 [Maven 版本规范](mvnver)
+- NeoForge 内部算法比较版本号新旧，推荐遵循 [Maven 版本规范][mvnver]
 - 更新日志用 `\n` 分隔行（可简写日志并外链详情）
 - 可配置 `build.gradle` 自动生成此文件（Groovy 原生支持 JSON 解析）
-- 参考示例：[nocubes]、[Corail Tombstone](corail)、[Chisels & Bits 2](chisel)
+- 参考示例：[nocubes]、[Corail Tombstone][corail]、[Chisels & Bits 2][chisel]
 
 ## 获取更新检查结果
 

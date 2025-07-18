@@ -1,15 +1,15 @@
----
+﻿---
 sidebar_position: 6
 ---
 # 生物效果与药水(`Mob Effects & Potions`)
 
-状态效果（有时称为药水效果，代码中称为 `MobEffect`s）是每刻影响[`生物实体`](livingentity)的机制。本文阐述其用法、效果与药水的区别，以及如何添加自定义效果。
+状态效果（有时称为药水效果，代码中称为 `MobEffect`s）是每刻影响[`生物实体`][livingentity]的机制。本文阐述其用法、效果与药水的区别，以及如何添加自定义效果。
 
 ## 术语
 
-- **`MobEffect`**：每刻影响实体的效果。如同[方块](block)或[物品](item)，`MobEffect` 是注册对象，需[注册](registration)且为单例。
+- **`MobEffect`**：每刻影响实体的效果。如同[方块][block]或[物品][item]，`MobEffect` 是注册对象，需[注册][registration]且为单例。
     - **瞬时生物效果**(`instant mob effect`)：特指设计为仅应用一刻的效果（原版含瞬间治疗与瞬间伤害）。
-- **`MobEffectInstance`**：`MobEffect` 的实例，含持续时间、强度等级等属性（见下文）。其关系类比于 [`ItemStack`](itemstack) 与 `Item`。
+- **`MobEffectInstance`**：`MobEffect` 的实例，含持续时间、强度等级等属性（见下文）。其关系类比于 [`ItemStack`][itemstack] 与 `Item`。
 - **`Potion`**：一组 `MobEffectInstance` 的集合。原版主要用于四种药水物品，但可应用于任意物品，具体效果取决于物品实现。
 - **药水物品**(`potion item`)：特指可关联药水的物品（非正式术语）。原版含四种：普通药水、喷溅药水、滞留药水与药箭，模组可扩展。
 
@@ -50,7 +50,7 @@ public class MyMobEffect extends MobEffect {
 }
 ```
 
-与其他注册对象相同，`MobEffect` 需[注册](registration)：
+与其他注册对象相同，`MobEffect` 需[注册][registration]：
 
 ```java
 // MOB_EFFECTS 是 DeferredRegister<MobEffect>
@@ -62,7 +62,7 @@ public static final Holder<MobEffect> MY_MOB_EFFECT = MOB_EFFECTS.register("my_m
 ));
 ```
 
-`MobEffect` 类提供默认功能，可为受影响的实体添加[属性修饰符](attributemodifier)，并在效果过期或被移除时清除（如速度效果添加移动速度修饰符）。添加方式如下：
+`MobEffect` 类提供默认功能，可为受影响的实体添加[属性修饰符][attributemodifier]，并在效果过期或被移除时清除（如速度效果添加移动速度修饰符）。添加方式如下：
 
 ```java
 public static final Holder<MobEffect> MY_MOB_EFFECT = MOB_EFFECTS.register("my_mob_effect", () -> new MyMobEffect(...)
@@ -87,11 +87,11 @@ public class MyMobEffect extends InstantenousMobEffect {
 }
 ```
 
-随后按常规[注册](registration)效果。
+随后按常规[注册][registration]效果。
 
 ### **事件**(`Events`)
 
-许多效果逻辑需在其他位置应用（如漂浮效果在生物移动处理器中实现）。模组 `MobEffect` 通常应在[事件处理器](events)中实现逻辑。NeoForge 提供相关事件：
+许多效果逻辑需在其他位置应用（如漂浮效果在生物移动处理器中实现）。模组 `MobEffect` 通常应在[事件处理器][events]中实现逻辑。NeoForge 提供相关事件：
 
 - `MobEffectEvent.Applicable`：检查 `MobEffectInstance` 能否应用于实体时触发，可强制允许/阻止添加效果。
 - `MobEffectEvent.Added`：`MobEffectInstance` 添加至目标时触发，含可能存在的旧效果信息。
@@ -161,7 +161,7 @@ public static final Holder<Potion> MY_POTION = POTIONS.register("my_potion", reg
 
 ### **酿造**(`Brewing`)
 
-添加药水后需实现生存模式获取途径。原版酿造台无[数据包](datapack)支持，需通过代码添加配方：
+添加药水后需实现生存模式获取途径。原版酿造台无[数据包][datapack]支持，需通过代码添加配方：
 
 ```java
 @SubscribeEvent // 注册到游戏事件总线

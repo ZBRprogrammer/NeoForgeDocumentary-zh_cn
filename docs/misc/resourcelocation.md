@@ -1,6 +1,6 @@
-# **资源定位符**(`Resource Locations`)
+﻿# **资源定位符**(`Resource Locations`)
 
-**资源定位符**(`ResourceLocation`) 是 Minecraft 中最核心的概念之一。它作为键用于[注册表](registries)，作为数据/资源文件的标识符，作为代码中模型的引用，并广泛应用于其他场景。`ResourceLocation` 由两部分组成：命名空间(`namespace`)和路径(`path`)，以 `:` 分隔。
+**资源定位符**(`ResourceLocation`) 是 Minecraft 中最核心的概念之一。它作为键用于[注册表][registries]，作为数据/资源文件的标识符，作为代码中模型的引用，并广泛应用于其他场景。`ResourceLocation` 由两部分组成：命名空间(`namespace`)和路径(`path`)，以 `:` 分隔。
 
 命名空间表示资源所属的模组、资源包或数据包。例如，模组 ID 为 `examplemod` 的模组使用 `examplemod` 命名空间。Minecraft 使用 `minecraft` 命名空间。额外命名空间可通过创建对应数据文件夹自由定义（通常由数据包使用，以分离逻辑）。
 

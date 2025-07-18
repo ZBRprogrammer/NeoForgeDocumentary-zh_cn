@@ -94,7 +94,7 @@ NBT 在 Minecraft 中应用广泛。[**方块实体**(`BlockEntity`)][blockentit
 
 ## 另请参阅
 
-- [Minecraft Wiki 上的 NBT 格式](`nbtwiki`)
+- [Minecraft Wiki 上的 NBT 格式][nbtwiki]
 
 [blockentity]: ../blockentities/index.md
 [datapack]: ../resources/index.md#data

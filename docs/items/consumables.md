@@ -146,7 +146,7 @@ Consumable.builder()
 public static final ItemUseAnimation EXAMPLE_ANIMATION = ItemUseAnimation.valueOf("EXAMPLEMOD_ITEM_USE_ANIMATION");
 ```
 
-接着开始应用变换。需创建新`IClientItemExtensions`，实现所需方法，并在[**模组事件总线**](`modbus`)的`RegisterClientExtensionsEvent`中注册：
+接着开始应用变换。需创建新`IClientItemExtensions`，实现所需方法，并在[**模组事件总线**][modbus]的`RegisterClientExtensionsEvent`中注册：
 
 ```java
 public class ConsumableClientItemExtensions implements IClientItemExtensions {
@@ -348,7 +348,7 @@ public static final DeferredItem<Item> FOOD = ITEMS.registerSimpleItem(
 
 ### **药水内容物**(`Potion Contents`)
 
-通过`PotionContents`的[药水][potions]内容是另一种在消耗时应用效果的`ConsumableListener`。包含要应用的可选药水、药水颜色的可选色调、与药水一起应用的自定义[`MobEffectInstance`](`mobeffectinstance`)列表，以及获取堆叠名称时使用的可选翻译键。若非`PotionItem`子类，模组开发者需重写`Item#getName`。
+通过`PotionContents`的[药水][potions]内容是另一种在消耗时应用效果的`ConsumableListener`。包含要应用的可选药水、药水颜色的可选色调、与药水一起应用的自定义[`MobEffectInstance`][mobeffectinstance]列表，以及获取堆叠名称时使用的可选翻译键。若非`PotionItem`子类，模组开发者需重写`Item#getName`。
 
 [animation]: #itemuseanimation
 [consumeeffect]: #consumeeffect

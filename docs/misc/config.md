@@ -1,4 +1,4 @@
-# **配置**(`Configuration`)
+﻿# **配置**(`Configuration`)
 
 配置用于定义模组实例的设置和用户偏好。NeoForge 使用 [TOML][toml] 文件和 [NightConfig][nightconfig] 库实现配置系统。
 
@@ -113,7 +113,7 @@ private ExampleConfig(ModConfigSpec.Builder builder) {
 
 ## 注册配置
 
-构建 `ModConfigSpec` 后需注册，以便 NeoForge 加载、跟踪和同步配置。应在模组构造函数中通过 `ModContainer#registerConfig` 注册，并指定[配置类型](configtype)（代表所属端）和 `ModConfigSpec`，可选指定配置文件名。
+构建 `ModConfigSpec` 后需注册，以便 NeoForge 加载、跟踪和同步配置。应在模组构造函数中通过 `ModContainer#registerConfig` 注册，并指定[配置类型][configtype]（代表所属端）和 `ModConfigSpec`，可选指定配置文件名。
 
 ```java
 // 在主模组文件中使用 ModConfigSpec CONFIG
@@ -130,7 +130,7 @@ public ExampleMod(ModContainer container) {
 配置类型决定文件位置、加载时机及网络同步策略。所有配置默认从物理客户端的 `.minecraft/config` 或物理服务器的 `<server_folder>/config` 加载。各类型差异如下：
 
 :::tip
-NeoForge 在代码库中[详细说明配置类型](type)。
+NeoForge 在代码库中[详细说明配置类型][type]。
 :::
 
 - `STARTUP`
@@ -164,7 +164,7 @@ NeoForge 在代码库中[详细说明配置类型](type)。
 
 ## **配置事件**(`Configuration Events`)
 
-配置加载/重载/卸载时的操作可通过 `ModConfigEvent.Loading`、`ModConfigEvent.Reloading` 和 `ModConfigEvent.Unloading` 事件实现。事件需[注册](events)到模组事件总线。
+配置加载/重载/卸载时的操作可通过 `ModConfigEvent.Loading`、`ModConfigEvent.Reloading` 和 `ModConfigEvent.Unloading` 事件实现。事件需[注册][events]到模组事件总线。
 
 :::caution
 这些事件针对模组所有配置触发，需通过提供的 `ModConfig` 对象区分具体配置。
@@ -174,7 +174,7 @@ NeoForge 在代码库中[详细说明配置类型](type)。
 
 配置界面允许玩家在游戏中编辑模组配置，无需手动修改文件。界面会自动解析注册的配置文件并填充内容。
 
-模组可使用 NeoForge 内置配置界面。可通过继承 `ConfigurationScreen` 修改默认界面行为，或完全自定义界面。自定义界面需在模组构造期间通过[客户端](client)注册 `IConfigScreenFactory` 扩展点：
+模组可使用 NeoForge 内置配置界面。可通过继承 `ConfigurationScreen` 修改默认界面行为，或完全自定义界面。自定义界面需在模组构造期间通过[客户端][client]注册 `IConfigScreenFactory` 扩展点：
 
 ```java
 // 在客户端主模组文件中

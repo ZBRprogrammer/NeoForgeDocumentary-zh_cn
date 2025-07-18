@@ -1,18 +1,18 @@
----
+﻿---
 sidebar_position: 4
 ---
 # **工具**(`Tools`)
 
-[**物品**](item)的主要用途是破坏[**方块**](block)。许多模组添加新工具套装（如铜质工具）或新工具类型（如锤子）。
+[**物品**][item]的主要用途是破坏[**方块**][block]。许多模组添加新工具套装（如铜质工具）或新工具类型（如锤子）。
 
 ## 自定义工具套装
 
-工具套装通常包含五件物品：镐、斧、锹、锄和剑（剑非传统工具，但为统一性包含在此）。所有工具均通过以下八个[**数据组件**](datacomponents)实现：
+工具套装通常包含五件物品：镐、斧、锹、锄和剑（剑非传统工具，但为统一性包含在此）。所有工具均通过以下八个[**数据组件**][datacomponents]实现：
 
 - `DataComponents#MAX_DAMAGE` 和 `#DAMAGE`（耐久度）
 - `#MAX_STACK_SIZE`（堆叠数设为 `1`）
 - `#REPAIRABLE`（铁砧修复）
-- `#ENCHANTABLE`（最大[附魔](enchantment)等级）
+- `#ENCHANTABLE`（最大[附魔][enchantment]等级）
 - `#ATTRIBUTE_MODIFIERS`（攻击伤害与攻击速度）
 - `#TOOL`（挖掘信息）
 - `#WEAPON`（物品伤害与禁用盾牌）
@@ -40,7 +40,7 @@ public static final ToolMaterial COPPER_MATERIAL = new ToolMaterial(
 );
 ```
 
-定义 `ToolMaterial` 后，可用于[注册](registering)工具。所有 `tool` 委托方法参数相同：
+定义 `ToolMaterial` 后，可用于[注册][registering]工具。所有 `tool` 委托方法参数相同：
 
 ```java
 // ITEMS 是 DeferredRegister.Items
@@ -71,7 +71,7 @@ public static final DeferredItem<Item> COPPER_HOE = ITEMS.registerItem("copper_h
 
 ### **标记**(`Tags`)
 
-创建 `ToolMaterial` 时需分配方块[标记](tags)，包含无法被此工具破坏的方块（如 `minecraft:incorrect_for_stone_tool` 含钻石矿）。为便于分配挖掘等级，存在"需特定工具挖掘"的标记（如 `minecraft:needs_iron_tool` 含钻石矿，`minecraft:needs_diamond_tool` 含黑曜石）。
+创建 `ToolMaterial` 时需分配方块[标记][tags]，包含无法被此工具破坏的方块（如 `minecraft:incorrect_for_stone_tool` 含钻石矿）。为便于分配挖掘等级，存在"需特定工具挖掘"的标记（如 `minecraft:needs_iron_tool` 含钻石矿，`minecraft:needs_diamond_tool` 含黑曜石）。
 
 可直接复用现有标记（如铜质工具作为强化石质工具时传入 `BlockTags#INCORRECT_FOR_STONE_TOOL`）。
 
@@ -116,7 +116,7 @@ public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = TagKey.create(Buil
 
 ## 自定义工具
 
-通过 `Item.Properties#component` 添加 `Tool` [数据组件](datacomponents)（通过 `DataComponents#TOOL`）可创建自定义工具。
+通过 `Item.Properties#component` 添加 `Tool` [数据组件][datacomponents]（通过 `DataComponents#TOOL`）可创建自定义工具。
 
 `Tool` 包含：
 - `Tool.Rule` 列表（规则集）
@@ -136,12 +136,12 @@ public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = TagKey.create(Buil
 
 无需使用现有 `ToolMaterial` 即可创建任意工具或多功能工具（如镐斧一体），通过组合以下部分实现：
 - 通过 `Item.Properties#component` 设置 `DataComponents#TOOL` 添加自定义规则
-- 通过 `Item.Properties#attributes` 添加[属性修饰符](attributemodifier)（如攻击伤害/速度）
+- 通过 `Item.Properties#attributes` 添加[属性修饰符][attributemodifier]（如攻击伤害/速度）
 - 通过 `Item.Properties#durability` 添加耐久度
 - 通过 `Item.Properties#repairable` 允许修复
 - 通过 `Item.Properties#enchantable` 允许附魔
 - 通过 `Item.Properties#component` 设置 `DataComponents#WEAPON` 允许作为武器并禁用格挡
-- 重写 `IItemExtension#canPerformAction` 定义可执行的[**物品能力**](itemability)
+- 重写 `IItemExtension#canPerformAction` 定义可执行的[**物品能力**][itemability]
 - 若需右键修改方块状态，调用 `IBlockExtension#getToolModifiedState`
 - 将工具加入 `minecraft:enchantable/*` 物品标记以允许特定附魔
 - 将工具加入 `minecraft:*_preferred_weapons` 标记以使生物偏好使用
