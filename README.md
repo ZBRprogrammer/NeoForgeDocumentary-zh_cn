@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # NeoForgeDocumentary-zh_cn
 A translated edition of NeoForge Documentary (zh_cn, 1.21.5-1.21.6, translated by LLM)
 =======
@@ -38,4 +37,3 @@ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
->>>>>>> Import documentary to repo
