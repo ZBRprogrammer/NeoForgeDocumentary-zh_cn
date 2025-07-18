@@ -1,4 +1,4 @@
-// @ts-check
+﻿// @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 const {themes} = require('prism-react-renderer');
 const lightTheme = themes.oneLight;
@@ -28,8 +28,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: "zh_cn",
+    locales: ["zh_cn"],
   },
 
   presets: [
