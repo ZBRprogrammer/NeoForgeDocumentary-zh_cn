@@ -6,7 +6,7 @@
 
 菜单动态创建和移除，因此非注册对象。需注册另一个工厂对象以轻松创建和引用菜单的*类型*。对菜单而言，此对象为`MenuType`。
 
-`MenuType`必须[**注册**(`registered`)]。
+`MenuType`必须[**注册**(`registered`)][registered]。
 
 ### `MenuSupplier`
 
